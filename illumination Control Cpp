@@ -1,32 +1,23 @@
-# Prerequisites
-*.d
+#include <iostream>
+#include <cmath>
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+using namespace std;
 
-# Precompiled Headers
-*.gch
-*.pch
+int main() {
+    double x;
+    int N;
+    // 输入x和N，例如：2023.2023 28
+    cin >> x >> N;
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+    long long s = 0; // 用长整型防止溢出
+    for (int k = 0; k < N; ++k) {
+        // 计算当前值：x + k/N（转为浮点数除法）
+        double current = x + static_cast<double>(k) / N;
+        // 取不大于current的最大整数
+        long long ix = floor(current);
+        s += ix; // 累加到总和
+    }
 
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+    cout << s << endl;
+    return 0;
+}
